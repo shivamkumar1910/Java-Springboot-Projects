@@ -1,0 +1,10 @@
+com\paypalclone\userservice\repository\UserRepository.class
+com\paypalclone\userservice\config\SecurityConfig.class
+com\paypalclone\userservice\controller\UserController.class
+com\paypalclone\userservice\dto\RegisterRequest.class
+com\paypalclone\userservice\UserServiceApplication.class
+com\paypalclone\userservice\service\UserService.class
+com\paypalclone\userservice\dto\LoginRequest.class
+com\paypalclone\userservice\entity\User$UserBuilder.class
+com\paypalclone\userservice\dto\AuthResponse.class
+com\paypalclone\userservice\entity\User.class

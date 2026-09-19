@@ -1,0 +1,7 @@
+com\paypalclone\walletservice\service\WalletService.class
+com\paypalclone\walletservice\WalletServiceApplication.class
+com\paypalclone\walletservice\dto\AddMoneyRequest.class
+com\paypalclone\walletservice\entity\Wallet.class
+com\paypalclone\walletservice\entity\Wallet$WalletBuilder.class
+com\paypalclone\walletservice\controller\WalletController.class
+com\paypalclone\walletservice\repository\WalletRepository.class
