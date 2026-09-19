@@ -1,0 +1,8 @@
+com\example\wallet\entity\Wallet.class
+com\example\wallet\entity\TransactionStatus.class
+com\example\wallet\dto\WalletResponse.class
+com\example\wallet\entity\Transaction$TransactionBuilder.class
+com\example\wallet\repository\WalletRepository.class
+com\example\wallet\entity\Transaction.class
+com\example\wallet\entity\Wallet$WalletBuilder.class
+com\example\wallet\repository\UserRepository.class
