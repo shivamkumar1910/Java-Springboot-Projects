@@ -1,100 +1,51 @@
-# My Java Spring Boot Learning Workspace
+# Java Spring Boot Projects
 
-This is the place where I build small but meaningful projects to sharpen my backend, full-stack, and product-thinking skills.
+A learning workspace containing small, practical Java and Spring Boot applications. Each project is designed to be readable, runnable locally, and easy to explain in an interview.
 
-I keep this workspace organized as a personal portfolio of ideas, experiments, and learning builds. Every project here is meant to be readable, practical, and easy to explain in an interview.
+## Projects
 
-## What this workspace is for
+### PayPal Clone
 
-- Building real backend features with Java and Spring Boot
-- Practicing clean API design, authentication, and database work
-- Creating full-stack apps with a React frontend
-- Keeping my projects organized in one place as I keep learning
-- Turning side projects into portfolio pieces that reflect how I think as a developer
+- Location: [paypal-clone](paypal-clone/)
+- Stack: Java 17, Spring Boot, Spring Security, JWT, JPA, PostgreSQL/H2, React, and Vite
+- Focus: wallet balance, adding money, transfers, authentication, and transaction history
 
-## Current project
+### Project Management System
 
-### Paypal Clone
-- Path: `Paypal Clone/`
-- Stack: Java 17, Spring Boot 3, Spring Security, JWT, JPA, H2/PostgreSQL, React + Vite
-- Description: A wallet and payment app inspired by PayPal, covering core flows like login, wallet balance, add-money, money transfer, and transaction history.
+- Location: [project-management-system](project-management-system/)
+- Stack: Java 17, Spring Boot, Spring Web, Spring Data JPA, PostgreSQL, Maven, Lombok, and Bean Validation
+- Focus: users, projects, project ownership, task assignment, due dates, priorities, and task status
+- API: REST endpoints under `/api/users`, `/api/projects`, and `/api/tasks`
 
-## How I like to build projects
-
-I prefer projects that are:
-
-- practical rather than just theoretical
-- easy to understand without extra explanation
-- structured enough to be scalable later
-- built with real business flow in mind
-- simple enough that the logic is visible and interview-friendly
-
-## Project structure
+## Workspace Layout
 
 ```text
-Java Springboot Projects/
+Java-Springboot-Projects/
 ├── README.md
-├── Paypal Clone/
+├── paypal-clone/
 │   ├── backend/
 │   ├── frontend/
 │   └── README.md
-├── Project 2/
-│   ├── backend/
-│   ├── frontend/
-│   └── README.md
-└── Project 3/
-    ├── backend/
-    ├── frontend/
+└── project-management-system/
+    ├── pom.xml
+    ├── src/
     └── README.md
 ```
 
-## Typical setup pattern
+## Common Standards
 
-Each project usually follows this format:
+- Keep business logic in services and database access in repositories.
+- Use DTOs for API input and output.
+- Externalize database credentials with environment variables.
+- Prefer simple, focused features over unnecessary infrastructure.
+- Document setup, API examples, and testing steps in each project README.
 
-- `backend/` for the Spring Boot application
-- `frontend/` for React or another UI layer
-- `README.md` for project-specific notes and setup steps
-- `pom.xml` or `build.gradle` for dependencies
-- `.env.example` for configuration values and secrets
+## Running a Spring Boot Project
 
-## Standards I keep in mind
-
-- Keep the code readable and clean
-- Favor clear architecture over unnecessary complexity
-- Use environment variables for database and secret config
-- Keep features focused on real use cases
-- Add tests where they make sense
-- Make each project easy to explain in one conversation
-
-## Typical run command
+From the selected project directory, run:
 
 ```bash
-# Backend
-cd backend
 mvn spring-boot:run
-
-# Frontend
-cd frontend
-npm install
-npm run dev
 ```
 
-## Why this matters
-
-This workspace is more than a folder of code. It reflects the way I learn: by building, debugging, improving, and documenting things I actually understand.
-
-The goal is not to collect random projects. The goal is to build a portfolio that shows I can think in systems, solve real problems, and turn ideas into working software.
-
-## Future direction
-
-I plan to keep adding more projects here as I learn more about:
-
-- API design
-- payment flows
-- security and authentication
-- database modeling
-- cloud deployment
-- more full-stack product ideas
-
-This is a growth workspace, and I want it to keep evolving with my skills.
+Refer to the project-specific README for database setup, ports, frontend commands, and API examples.
