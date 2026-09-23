@@ -1,51 +1,70 @@
 # Java Spring Boot Projects
 
-A learning workspace containing small, practical Java and Spring Boot applications. Each project is designed to be readable, runnable locally, and easy to explain in an interview.
+This workspace contains two practical Java/Spring Boot learning projects built for local development and portfolio demos.
 
-## Projects
+## Included projects
 
-### PayPal Clone
+### 1. PayPal Clone
 
 - Location: [paypal-clone](paypal-clone/)
-- Stack: Java 17, Spring Boot, Spring Security, JWT, JPA, PostgreSQL/H2, React, and Vite
-- Focus: wallet balance, adding money, transfers, authentication, and transaction history
+- Stack: Java 17, Spring Boot, Spring Data JPA, Spring Security, React, Vite, and Maven
+- Focus: user authentication, wallet balances, adding money, sending funds, and transaction tracking
+- Main services: `user-service`, `wallet-service`, and `transaction-service`
 
-### Project Management System
+### 2. Project Management System
 
 - Location: [project-management-system](project-management-system/)
-- Stack: Java 17, Spring Boot, Spring Web, Spring Data JPA, PostgreSQL, Maven, Lombok, and Bean Validation
-- Focus: users, projects, project ownership, task assignment, due dates, priorities, and task status
-- API: REST endpoints under `/api/users`, `/api/projects`, and `/api/tasks`
+- Stack: Java 17, Spring Boot, Spring Web, Spring Data JPA, PostgreSQL, Maven, Lombok, and validation
+- Focus: users, projects, task assignment, priorities, due dates, and status tracking
+- API base path: `/api/users`, `/api/projects`, and `/api/tasks`
 
-## Workspace Layout
+## Workspace structure
 
 ```text
 Java-Springboot-Projects/
 ├── README.md
 ├── paypal-clone/
-│   ├── backend/
-│   ├── frontend/
+│   ├── backend/            # legacy/reference backend app
+│   ├── frontend/           # React + Vite app
+│   ├── services/
+│   │   ├── user-service/
+│   │   ├── wallet-service/
+│   │   └── transaction-service/
+│   ├── pom.xml
 │   └── README.md
-└── project-management-system/
-    ├── pom.xml
-    ├── src/
-    └── README.md
+├── project-management-system/
+│   ├── src/
+│   ├── pom.xml
+│   └── README.md
+└── .gitignore
 ```
 
-## Common Standards
+## Quick start
 
-- Keep business logic in services and database access in repositories.
-- Use DTOs for API input and output.
-- Externalize database credentials with environment variables.
-- Prefer simple, focused features over unnecessary infrastructure.
-- Document setup, API examples, and testing steps in each project README.
-
-## Running a Spring Boot Project
-
-From the selected project directory, run:
+### Run a Spring Boot app
 
 ```bash
+cd <project-folder>
 mvn spring-boot:run
 ```
 
-Refer to the project-specific README for database setup, ports, frontend commands, and API examples.
+### Run the PayPal frontend
+
+```bash
+cd paypal-clone/frontend
+npm install
+npm run dev
+```
+
+### Run the project management app
+
+```bash
+cd project-management-system
+mvn spring-boot:run
+```
+
+## Notes
+
+- Use the project-specific README in each folder for exact setup, ports, and API examples.
+- Keep credentials and environment variables outside the source code when possible.
+- Each project is intentionally simple and beginner-friendly, with a focus on readability and learning value.

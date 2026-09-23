@@ -1,124 +1,144 @@
 # PayPal Clone
 
-A beginner-friendly payment app inspired by PayPal, designed to feel personal, practical, and realistic enough for a college or portfolio project without becoming too advanced.
+A beginner-friendly digital wallet app inspired by PayPal. The project is implemented as a small microservice-style setup with separate backend services for users, wallets, and transactions, plus a React frontend for the dashboard and payment flows.
 
 ## Project goal
 
-This project demonstrates the core flow of a digital wallet application:
+This app demonstrates the core experience of a wallet application:
+
 - user registration and login
 - wallet balance tracking
 - adding money
-- sending money between people
+- sending money between users
 - transaction history
-- a simple frontend dashboard
+- dashboard summaries and payment screens
 
-This workspace was built to look handmade and intentional rather than like a generic starter template.
+## Current architecture
 
-## Architecture
+The active implementation uses three Spring Boot services:
 
-The project is organized into three Spring Boot services:
-
-1. User Service
-   - handles registration and login
+1. User service
+   - handles account registration and login
    - stores user data
-   - runs on port 8081
+   - runs on `http://localhost:8081`
 
-2. Wallet Service
-   - manages wallet balance
-   - handles adding money
-   - runs on port 8082
+2. Wallet service
+   - manages wallet balance and deposit actions
+   - runs on `http://localhost:8082`
 
-3. Transaction Service
-   - records payment activity
-   - stores money transfer history
-   - runs on port 8083
+3. Transaction service
+   - records payment activity and transaction history
+   - runs on `http://localhost:8083`
 
-This keeps the project simple, realistic, and beginner-friendly while still matching the idea of separate payment-domain services.
+There is also a legacy `backend/` folder in the project, which appears to be an older single-app version kept as a reference.
 
 ## Workspace structure
 
 ```text
-Paypal Clone/
+paypal-clone/
 ├── README.md
 ├── pom.xml
+├── backend/                 # legacy/reference app
+├── frontend/                # React + Vite UI
 ├── services/
 │   ├── user-service/
 │   ├── wallet-service/
 │   └── transaction-service/
-├── frontend/
-│   ├── src/
-│   ├── package.json
-│   └── ...
-└── backend/
-    └── legacy-version/
+└── target/
 ```
 
-## Database setup
+## Prerequisites
 
-The project uses MySQL by default.
+- Java 17+
+- Maven
+- Node.js 18+
+- npm
 
-Create these databases:
+## Run the backend services
 
-```sql
-CREATE DATABASE paypal_clone_users;
-CREATE DATABASE paypal_clone_wallets;
-CREATE DATABASE paypal_clone_transactions;
-```
-
-## Run the services
-
-From the project root:
+From the project root, start each service in its own terminal:
 
 ```bash
-mvn clean install
-cd services/user-service
+cd paypal-clone/services/user-service
 mvn spring-boot:run
 ```
 
-Open a second terminal:
-
 ```bash
-cd services/wallet-service
+cd paypal-clone/services/wallet-service
 mvn spring-boot:run
 ```
 
-Open a third terminal:
-
 ```bash
-cd services/transaction-service
+cd paypal-clone/services/transaction-service
 mvn spring-boot:run
 ```
 
-## Frontend setup
+## Run the frontend
 
 ```bash
-cd frontend
+cd paypal-clone/frontend
 npm install
 npm run dev
 ```
 
-## API overview
+The frontend is typically served on:
 
-### User service
-- POST /api/users/register
-- POST /api/users/login
+- `http://localhost:5173`
 
-### Wallet service
-- GET /api/wallet/{userId}
-- POST /api/wallet/{userId}/add-money
+## Backend API overview
 
-### Transaction service
-- POST /api/transactions/send
-- GET /api/transactions/{userId}
+### User service (`:8081`)
+
+- `POST /api/users/register`
+- `POST /api/users/login`
+
+### Wallet service (`:8082`)
+
+- `GET /api/wallet/{userId}`
+- `POST /api/wallet/{userId}/add-money`
+
+### Transaction service (`:8083`)
+
+- `POST /api/transactions/send`
+- `GET /api/transactions/{userId}`
+
+## Frontend flow
+
+The React app includes pages for:
+
+- login
+- registration
+- dashboard
+- add money
+- send money
+- transaction view
+
+The app calls the API through a shared axios client located in `frontend/src/api.js` and sends requests to the local backend base URL:
+
+```js
+http://localhost:8080/api
+```
+
+## Database configuration
+
+Each service uses an in-memory H2 database by default, configured in its `src/main/resources/application.properties` file. The default profile is designed for local testing without requiring a separate database installation.
+
+Example defaults:
+
+- `user-service` -> `jdbc:h2:mem:paypal_clone_users`
+- `wallet-service` -> `jdbc:h2:mem:paypal_clone_wallets`
+- `transaction-service` -> `jdbc:h2:mem:paypal_clone_transactions`
 
 ## Notes
 
-This project is intentionally simple and clear. The focus is on showing the real logic behind a digital wallet app while keeping the code easy to understand for a beginner developer.
+- This is a learning-focused project, so the architecture is intentionally understandable and easy to follow.
+- The UI is built with Vite + React and uses a simple local token flow for authenticated requests.
+- The various service modules are meant to be run together to simulate a real wallet platform.
 
 ## Future improvements
 
-- add JWT authentication across services
-- connect services with REST APIs or a message broker
-- add wallet deduction on transfers
-- add profile editing and user search
-- add stronger validation and error handling
+- add JWT validation across services
+- connect services more formally with an API gateway or message broker
+- improve validation and error handling
+- add user search and profile editing
+- add richer wallet deductions and transfer rules

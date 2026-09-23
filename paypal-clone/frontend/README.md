@@ -1,16 +1,63 @@
-# React + Vite
+# PayPal Clone Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This folder contains the React + Vite frontend for the PayPal clone application. It provides the user-facing dashboard, authentication flow, wallet balance display, and money transfer screens.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite
+- React Router
+- Axios
+- Tailwind CSS
+- Lucide icons
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+From this directory:
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+The app will usually run at:
+
+- `http://localhost:5173`
+
+## Build for production
+
+```bash
+npm run build
+```
+
+## Lint
+
+```bash
+npm run lint
+```
+
+## Main pages
+
+- login
+- register
+- dashboard
+- add money
+- send money
+
+## API configuration
+
+The frontend uses a shared API client in `src/api.js`:
+
+```js
+const api = axios.create({
+  baseURL: 'http://localhost:8080/api',
+});
+```
+
+This means the frontend expects the backend API to be running locally before starting the UI. In the current project setup, the backend services are exposed on ports `8081`, `8082`, and `8083`, and the UI is intended to work with the local API gateway layer or a matching proxy configuration.
+
+## Notes
+
+- This frontend is intentionally lightweight and easy to follow for a portfolio or learning project.
+- Styling is handled with Tailwind and a simple custom design system.
+- The app is designed to demonstrate wallet flows rather than production-grade security or architecture.
